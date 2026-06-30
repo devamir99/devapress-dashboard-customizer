@@ -1,0 +1,15 @@
+form#loginform , form#loginform input , form#loginform input:focus{
+    border: none !important;
+}
+body.login label{
+    margin-bottom: 10px !important;
+}
+p.forgetmenot {
+    padding-top: 10px;
+}
+
+input#user_login:focus , input#user_pass:focus {
+    box-shadow: none !important;
+    border-color: transparent !important;
+}
+

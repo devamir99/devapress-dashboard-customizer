@@ -1,0 +1,182 @@
+.devapress-plugin {
+    font-family: 'DevapressCustomFont', sans-serif !important;
+}
+.devapress-tab-content { margin-top: 20px; }
+
+.devapress-setting-card {
+    border: 1px solid #ddd;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background: #f9f9f9;
+}
+.devapress-setting-card h3 {
+    margin-top: 0;
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-family: 'DevapressCustomFont';
+}
+.devapress-setting-card span{
+    font-family: DevapressCustomFont;
+    font-size: 16px;
+    font-weight: bold;
+}
+.devapress-file-input-wrapper {
+    position: relative;
+    display: inline-block;
+}
+.devapress-file-input-wrapper input[type="file"] {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+}
+.devapress-file-input-label {
+    display: inline-block;
+    padding: 8px 15px;
+    background: #0073aa;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+.devapress-file-name {
+    margin-left: 10px;
+    margin-right: 10px;
+    font-style: italic;
+    font-size: 14px;
+}
+.devapress-input {
+    width: 80px;
+    padding: 5px;
+    font-size: 14px;
+    margin-left: 10px;
+}
+.devapress-color-input {
+    width: 60px;
+    height: 30px;
+    border: none;
+    padding: 0;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+.devapress-reset-button {
+    background: darkred !important;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+.devapress-reset-button:hover {
+    background: #a82424;
+    color: #fff;
+}
+
+span.devapress_bg_login_file {
+    margin-right: 10px;
+}
+
+.devapress-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+button#devapress_bg_login_remove_btn,
+button#devapress_login_logo_remove_btn
+{
+    width: fit-content;
+    background-color:#ff0000d9;
+    color:#FFF;
+    border:none;
+    border-radius: 4px;
+
+}
+
+.button-reset-option{
+    width: fit-content;
+    background-color:#ff0000d9;
+    padding: 5px 10px;
+    color:#FFF;
+    font-size: 16px;
+    border:none;
+    border-radius: 4px;
+    text-decoration: none !important;
+}
+
+.button-reset-option:hover{
+    background-color:#f00000;
+    color: #FFFFFF;
+}
+
+.button-reset-option:active {
+    border: none !important;
+}
+.devapress-reset-section p{
+    margin-top: 20px !important;
+}
+.nav-tab-wrapper {
+    font-family: 'DevapressCustomFont';
+    padding-top:10px !important;
+    padding-bottom:10px !important;
+}
+
+a.nav-tab {
+    border-radius: 4px;
+    border:1px solid #00000026;
+    margin-bottom:10px;
+}
+a.nav-tab:focus {
+    background-color: #000;
+    color: #FFF;
+    border:1px solid #00000026;
+    box-shadow: none !important;
+}
+
+.wrap.devapress-settings-page {
+    background: #f9f9f9;
+    padding: 20px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.devapress-settings-page p{
+    color:#666;
+    font-size:14px;
+    margin-top: 5px;
+}
+
+
+.devapress-setting-card {
+        border:1px solid #ddd;
+        padding:15px;
+        margin-bottom:15px;
+        border-radius:6px;
+        background:#f9f9f9;
+    }
+    .devapress-color-wrapper {
+        display:flex;
+        align-items:center;
+        gap:10px;
+        margin-top:5px;
+    }
+    .devapress-color-preview {
+        width:25px;
+        height:25px;
+        border:1px solid #ccc;
+        border-radius:4px;
+    }
+    .devapress-reset-button {
+        display:inline-block;
+        padding:6px 12px;
+        background:#0073aa;
+        color:#fff;
+        text-decoration:none;
+        border-radius:4px;
+    }
+    .devapress-reset-button:hover {
+        background:#006799;
+    }
+
