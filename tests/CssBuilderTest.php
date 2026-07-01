@@ -68,7 +68,7 @@ class CssBuilderTest extends TestCase
         $resolved = $this->loginSettings('glass-modern');
         $css = Devapress_Login_Customizer::compile_login_css($resolved);
 
-        $this->assertStringContainsString('667eea', $css);
+        $this->assertStringContainsString('6366f1', $css);
         $this->assertStringContainsString('loginform', $css);
         $this->assertStringContainsString('devapress-customized', $css);
     }
@@ -78,15 +78,44 @@ class CssBuilderTest extends TestCase
         $resolved = $this->loginSettings('gradient-bold');
         $css = Devapress_Login_Customizer::compile_login_css($resolved);
 
-        $this->assertStringContainsString('#f5576c', $css);
+        $this->assertStringContainsString('#ec4899', $css);
     }
 
     public function test_login_css_glass_effect_when_enabled(): void
     {
-        $resolved = $this->loginSettings('glass-modern');
+        $resolved = $this->loginSettings('classic-clean', ['login_form_glass' => true]);
         $css = Devapress_Login_Customizer::compile_login_css($resolved);
 
         $this->assertStringContainsString('backdrop-filter', $css);
+    }
+
+    public function test_login_css_split_layout_structure(): void
+    {
+        $resolved = $this->loginSettings('glass-modern');
+        $css = Devapress_Login_Customizer::compile_login_css($resolved);
+
+        $this->assertStringContainsString('devapress-layout-split', $css);
+        $this->assertStringContainsString('position: fixed', $css);
+        $this->assertStringContainsString('left: 0', $css);
+        $this->assertStringContainsString('right: 0', $css);
+    }
+
+    public function test_login_css_fullscreen_layout_structure(): void
+    {
+        $resolved = $this->loginSettings('gradient-bold');
+        $css = Devapress_Login_Customizer::compile_login_css($resolved);
+
+        $this->assertStringContainsString('devapress-layout-fullscreen', $css);
+        $this->assertStringContainsString('background-attachment: fixed', $css);
+    }
+
+    public function test_login_css_center_layout_structure(): void
+    {
+        $resolved = $this->loginSettings('classic-clean');
+        $css = Devapress_Login_Customizer::compile_login_css($resolved);
+
+        $this->assertStringContainsString('devapress-layout-center', $css);
+        $this->assertStringContainsString('max-width: 420px', $css);
     }
 
     public function test_login_css_no_glass_for_classic(): void
