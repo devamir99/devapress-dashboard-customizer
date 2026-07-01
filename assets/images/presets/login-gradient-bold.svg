@@ -1,14 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" role="img" aria-label="Gradient Bold login preset">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" role="img" aria-label="Fullscreen cinematic login">
   <defs>
-    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#f093fb"/>
-      <stop offset="100%" stop-color="#f5576c"/>
+    <linearGradient id="fullGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#ec4899"/>
     </linearGradient>
   </defs>
-  <rect width="320" height="200" fill="url(#g)"/>
-  <rect x="100" y="28" width="40" height="40" rx="20" fill="rgba(255,255,255,.5)"/>
-  <rect x="85" y="82" width="150" height="96" rx="12" fill="#fff"/>
-  <rect x="100" y="98" width="120" height="12" rx="4" fill="#f8f8f8"/>
-  <rect x="100" y="118" width="120" height="12" rx="4" fill="#f8f8f8"/>
-  <rect x="100" y="144" width="120" height="18" rx="8" fill="#f5576c"/>
+  <rect width="320" height="200" fill="url(#fullGrad)"/>
+  <rect width="320" height="200" fill="rgba(15,8,30,0.45)"/>
+  <ellipse cx="80" cy="40" rx="60" ry="40" fill="rgba(255,255,255,0.06)"/>
+  <ellipse cx="260" cy="170" rx="50" ry="30" fill="rgba(0,0,0,0.12)"/>
+  <rect x="85" y="32" width="150" height="136" rx="16" fill="#ffffff" filter="drop-shadow(0 12px 32px rgba(0,0,0,0.35))"/>
+  <rect x="103" y="56" width="114" height="8" rx="3" fill="#f1f5f9"/>
+  <rect x="103" y="72" width="114" height="8" rx="3" fill="#f1f5f9"/>
+  <rect x="103" y="96" width="114" height="16" rx="6" fill="#ec4899"/>
 </svg>
