@@ -59,10 +59,20 @@ class PresetsTest extends TestCase
         }
     }
 
-    public function test_glass_modern_login_preset_has_glass_enabled(): void
+    public function test_glass_modern_login_preset_uses_split_layout(): void
     {
         $preset = Devapress_Presets::get('login', 'glass-modern');
-        $this->assertTrue($preset['login_form_glass']);
+        $this->assertSame('split', $preset['login_layout']);
         $this->assertTrue($preset['bg_gradient_enable']);
+    }
+
+    public function test_login_presets_have_distinct_layouts(): void
+    {
+        $presets = Devapress_Presets::login_presets();
+        $layouts = array_column($presets, 'login_layout');
+        $this->assertContains('center', $layouts);
+        $this->assertContains('split', $layouts);
+        $this->assertContains('fullscreen', $layouts);
+        $this->assertCount(3, array_unique($layouts));
     }
 }
