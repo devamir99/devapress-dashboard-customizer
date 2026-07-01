@@ -1,14 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" role="img" aria-label="Glass Modern login preset">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" role="img" aria-label="Split login — form left, visual right">
+  <rect width="160" height="200" fill="#f8fafc"/>
+  <rect x="160" width="160" height="200" fill="url(#splitGrad)"/>
   <defs>
-    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#667eea"/>
-      <stop offset="100%" stop-color="#764ba2"/>
+    <linearGradient id="splitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#a855f7"/>
     </linearGradient>
   </defs>
-  <rect width="320" height="200" fill="url(#g)"/>
-  <rect x="100" y="28" width="40" height="40" rx="20" fill="rgba(255,255,255,.35)"/>
-  <rect x="85" y="82" width="150" height="96" rx="14" fill="rgba(255,255,255,.22)" stroke="rgba(255,255,255,.35)"/>
-  <rect x="100" y="98" width="120" height="12" rx="4" fill="rgba(255,255,255,.35)"/>
-  <rect x="100" y="118" width="120" height="12" rx="4" fill="rgba(255,255,255,.35)"/>
-  <rect x="100" y="144" width="120" height="18" rx="8" fill="#667eea"/>
+  <rect x="28" y="52" width="104" height="96" rx="12" fill="#fff" filter="drop-shadow(0 4px 12px rgba(15,23,42,0.08))"/>
+  <rect x="40" y="68" width="32" height="32" rx="16" fill="#e2e8f0"/>
+  <rect x="40" y="108" width="80" height="8" rx="3" fill="#f1f5f9"/>
+  <rect x="40" y="122" width="80" height="8" rx="3" fill="#f1f5f9"/>
+  <rect x="40" y="138" width="80" height="12" rx="5" fill="#6366f1"/>
+  <circle cx="240" cy="100" r="40" fill="rgba(255,255,255,0.08)"/>
+  <circle cx="280" cy="60" r="24" fill="rgba(255,255,255,0.06)"/>
 </svg>
