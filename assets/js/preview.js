@@ -103,34 +103,32 @@
 
         $mock.removeClass('is-disabled');
 
-        var bg = '#f0f0f1';
+        var layout = data.login_layout || 'center';
+        $mock
+            .removeClass('devapress-mock-login--layout-center devapress-mock-login--layout-split devapress-mock-login--layout-fullscreen')
+            .addClass('devapress-mock-login--layout-' + layout)
+            .attr('data-login-layout', layout);
+
+        var panelBg = '#667eea';
         if (data.bg_gradient_enable === true || data.bg_gradient_enable === '1' || data.bg_gradient_enable === 1) {
             if (data.bg_gradient_color1 && data.bg_gradient_color2) {
-                bg = 'linear-gradient(135deg, ' + data.bg_gradient_color1 + ', ' + data.bg_gradient_color2 + ')';
+                panelBg = 'linear-gradient(135deg, ' + data.bg_gradient_color1 + ', ' + data.bg_gradient_color2 + ')';
             }
         } else if (data.bg_color) {
-            bg = data.bg_color;
+            panelBg = data.bg_color;
         }
 
+        var formSide = data.split_form_bg || data.bg_color || '#f0f0f1';
         var formBg = data.login_form_bg || '#ffffff';
-        var glass = data.login_form_glass === true || data.login_form_glass === '1' || data.login_form_glass === 1;
-        if (glass) {
-            var rgb = hexToRgb(formBg) || { r: 255, g: 255, b: 255 };
-            formBg = 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',0.25)';
-        } else if (data.login_form_bg2) {
-            formBg = 'linear-gradient(135deg, ' + data.login_form_bg + ', ' + data.login_form_bg2 + ')';
-        }
 
         $mock.css({
-            'background': bg,
+            '--dp-panel-bg': panelBg,
+            '--dp-form-side': formSide,
             '--dp-form-bg': formBg,
             '--dp-form-radius': (data.login_form_radius || '8') + 'px',
             '--dp-input-radius': (data.login_input_radius || '6') + 'px',
             '--dp-btn': data.login_btn_bg || '#2271b1',
-            '--dp-btn-color': data.login_btn_color || '#ffffff',
-            '--dp-btn-radius': (data.login_btn_radius || '4') + 'px',
-            '--dp-label': data.login_label_color || '#3c434a',
-            '--dp-glass': glass ? 'blur(10px)' : 'none'
+            '--dp-label': data.login_label_color || '#3c434a'
         });
     }
 
