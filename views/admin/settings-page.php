@@ -58,6 +58,7 @@
         <a href="#tab-reset" class="nav-tab">بازنشانی</a>
     </div>
 
+    <?php /* Main settings form — only dashboard + login tabs (no nested forms). */ ?>
     <form method="post" action="options.php" enctype="multipart/form-data" id="devapress-settings-form">
         <?php settings_fields('devapress_settings_group'); ?>
 
@@ -89,20 +90,21 @@
             </div>
         </div>
 
-        <div id="tab-about" class="devapress-tab-content" style="display:none;">
-            <?php include DEVAPRESS_VIEW_DIR . 'tab-about.php'; ?>
-        </div>
-
-        <div id="tab-tools" class="devapress-tab-content" style="display:none;">
-            <?php include DEVAPRESS_VIEW_DIR . 'tab-tools.php'; ?>
-        </div>
-
-        <div id="tab-reset" class="devapress-tab-content" style="display:none;">
-            <?php include DEVAPRESS_VIEW_DIR . 'reset-options.php'; ?>
-        </div>
-
         <div class="devapress-form-footer">
             <?php submit_button('ذخیره تغییرات'); ?>
         </div>
     </form>
+
+    <?php /* Separate tabs with their own forms — must NOT be nested inside the main form. */ ?>
+    <div id="tab-about" class="devapress-tab-content" style="display:none;">
+        <?php include DEVAPRESS_VIEW_DIR . 'tab-about.php'; ?>
+    </div>
+
+    <div id="tab-tools" class="devapress-tab-content" style="display:none;">
+        <?php include DEVAPRESS_VIEW_DIR . 'tab-tools.php'; ?>
+    </div>
+
+    <div id="tab-reset" class="devapress-tab-content" style="display:none;">
+        <?php include DEVAPRESS_VIEW_DIR . 'reset-options.php'; ?>
+    </div>
 </div>

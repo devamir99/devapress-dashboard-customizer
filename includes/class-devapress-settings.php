@@ -111,11 +111,12 @@ class Devapress_Settings {
      */
     public static function sanitize($input) {
         $current = self::get_all();
-        $output  = self::defaults();
 
         if (!is_array($input)) {
             return $current;
         }
+
+        $output = $current;
 
         $dashboard_preset = sanitize_key($input['dashboard']['preset'] ?? 'none');
         $login_preset     = sanitize_key($input['login']['preset'] ?? 'none');
