@@ -35,28 +35,46 @@ if ($is_none) : ?>
     </span>
 <?php else : ?>
     <?php
-    $bg = '';
-    if (!empty($preset['bg_gradient_enable']) && !empty($preset['bg_gradient_color1']) && !empty($preset['bg_gradient_color2'])) {
-        $bg = 'linear-gradient(135deg, ' . esc_attr($preset['bg_gradient_color1']) . ', ' . esc_attr($preset['bg_gradient_color2']) . ')';
-    } elseif (!empty($preset['bg_color'])) {
-        $bg = esc_attr($preset['bg_color']);
-    } else {
-        $bg = 'linear-gradient(135deg, #667eea, #764ba2)';
-    }
-    $glass = !empty($preset['login_form_glass']);
-    $form_bg = $glass ? 'rgba(255,255,255,0.2)' : esc_attr($preset['login_form_bg'] ?? '#fff');
+    $layout = $preset['login_layout'] ?? 'center';
+    $grad1  = $preset['bg_gradient_color1'] ?? '#667eea';
+    $grad2  = $preset['bg_gradient_color2'] ?? '#764ba2';
+    $panel  = "linear-gradient(135deg, {$grad1}, {$grad2})";
+    $form_bg = esc_attr($preset['login_form_bg'] ?? '#fff');
+    $btn     = esc_attr($preset['login_btn_bg'] ?? '#2271b1');
     ?>
-    <span class="devapress-preset-mock devapress-preset-mock--login"
-          style="background:<?php echo esc_attr($bg); ?>;
-                 --dp-form-bg:<?php echo esc_attr($form_bg); ?>;
-                 --dp-form-radius:<?php echo esc_attr($preset['login_form_radius'] ?? '8'); ?>px;
-                 --dp-btn:<?php echo esc_attr($preset['login_btn_bg'] ?? '#2271b1'); ?>;
-                 <?php echo $glass ? '--dp-glass:blur(4px);' : ''; ?>">
-        <span class="mock-logo"></span>
-        <span class="mock-form">
-            <span class="mock-field"></span>
-            <span class="mock-field"></span>
-            <span class="mock-button"></span>
-        </span>
+    <span class="devapress-preset-mock devapress-preset-mock--login devapress-preset-mock--layout-<?php echo esc_attr($layout); ?>"
+          style="--dp-panel:<?php echo esc_attr($panel); ?>;
+                 --dp-form-side:<?php echo esc_attr($preset['split_form_bg'] ?? '#f0f0f1'); ?>;
+                 --dp-form-bg:<?php echo $form_bg; ?>;
+                 --dp-btn:<?php echo $btn; ?>;">
+        <?php if ($layout === 'split') : ?>
+            <span class="mock-split">
+                <span class="mock-split__form">
+                    <span class="mock-logo-sm"></span>
+                    <span class="mock-field"></span>
+                    <span class="mock-field"></span>
+                    <span class="mock-button"></span>
+                </span>
+                <span class="mock-split__panel"></span>
+            </span>
+        <?php elseif ($layout === 'fullscreen') : ?>
+            <span class="mock-fullscreen">
+                <span class="mock-fullscreen__bg"></span>
+                <span class="mock-fullscreen__card">
+                    <span class="mock-field"></span>
+                    <span class="mock-field"></span>
+                    <span class="mock-button"></span>
+                </span>
+            </span>
+        <?php else : ?>
+            <span class="mock-center">
+                <span class="mock-center__card">
+                    <span class="mock-logo-sm"></span>
+                    <span class="mock-field"></span>
+                    <span class="mock-field"></span>
+                    <span class="mock-button"></span>
+                </span>
+            </span>
+        <?php endif; ?>
     </span>
 <?php endif; ?>
