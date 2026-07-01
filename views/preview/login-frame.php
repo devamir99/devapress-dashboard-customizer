@@ -4,6 +4,9 @@ if (!defined('ABSPATH')) {
 }
 /** @var string $css */
 /** @var string $logo_url */
+/** @var array $data */
+$layout = sanitize_html_class($data['login_layout'] ?? 'center');
+$body_classes = 'login devapress-customized devapress-layout-' . $layout;
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -11,67 +14,12 @@ if (!defined('ABSPATH')) {
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php esc_html_e('Login Preview', 'devapress-customizer'); ?></title>
+    <link rel="stylesheet" href="<?php echo esc_url(DEVAPRESS_CSS_URL . 'login.css'); ?>?v=<?php echo esc_attr(DEVAPRESS_VERSION); ?>">
     <style>
-        body.login {
-            margin: 0;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-        }
-        #login {
-            width: 320px;
-            padding: 8% 0 0;
-        }
-        #login h1 a {
-            display: block;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            width: 84px;
-            height: 84px;
-            margin: 0 auto 25px;
-            text-indent: -9999px;
-            overflow: hidden;
-        }
-        #loginform {
-            margin: 0;
-            padding: 26px 24px;
-            box-shadow: 0 1px 3px rgba(0,0,0,.13);
-        }
-        #loginform label {
-            display: block;
-            margin-bottom: 6px;
-            font-size: 14px;
-        }
-        #loginform input[type="text"],
-        #loginform input[type="password"] {
-            width: 100%;
-            box-sizing: border-box;
-            margin-bottom: 16px;
-            padding: 8px 10px;
-            font-size: 14px;
-        }
-        #loginform input[type="submit"] {
-            width: 100%;
-            padding: 8px 12px;
-            font-size: 14px;
-            cursor: pointer;
-            border: none;
-        }
-        #nav, #backtoblog {
-            text-align: center;
-            margin-top: 16px;
-            font-size: 13px;
-        }
-        #nav a, #backtoblog a {
-            text-decoration: none;
-        }
         <?php echo $css; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
     </style>
 </head>
-<body class="login devapress-customized">
+<body class="<?php echo esc_attr($body_classes); ?>">
 <div id="login">
     <h1>
         <a href="#" <?php echo $logo_url ? 'style="background-image:url(' . esc_url($logo_url) . ')"' : ''; ?>>
