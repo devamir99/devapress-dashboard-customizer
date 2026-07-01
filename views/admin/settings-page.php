@@ -1,9 +1,21 @@
 <div class="wrap devapress-settings-page">
-    <h1>سفارشی‌ساز دواپرس</h1>
-    <p class="description">
-        یک طرح از پیش‌تعریف‌شده انتخاب کنید، سپس در صورت نیاز تنظیمات را سفارشی کنید.
-        تا زمانی که طرحی انتخاب نشود، هیچ استایلی اعمال نمی‌شود.
-    </p>
+    <div class="devapress-page-header">
+        <div class="devapress-page-header__main">
+            <h1>
+                سفارشی‌ساز دواپرس
+                <span class="devapress-version-badge">v<?php echo esc_html(DEVAPRESS_VERSION); ?></span>
+            </h1>
+            <p class="description">
+                ۶ طرح آماده برای داشبورد و صفحه ورود — با پیش‌نمایش زنده و امکان سفارشی‌سازی کامل.
+            </p>
+        </div>
+        <div class="devapress-page-header__meta">
+            <span>توسط Amir Falahi</span>
+            <a href="<?php echo esc_url(wp_login_url()); ?>" target="_blank" rel="noopener" class="button button-secondary">
+                مشاهده صفحه لاگین
+            </a>
+        </div>
+    </div>
 
     <?php
     $reset_notice = isset($_GET['reset']) ? sanitize_key($_GET['reset']) : '';
@@ -28,24 +40,51 @@
     <div class="nav-tab-wrapper devapress-nav-tabs">
         <a href="#tab-dashboard" class="nav-tab nav-tab-active">داشبورد</a>
         <a href="#tab-login" class="nav-tab">صفحه لاگین</a>
+        <a href="#tab-about" class="nav-tab">درباره</a>
         <a href="#tab-reset" class="nav-tab">بازنشانی</a>
     </div>
 
-    <form method="post" action="options.php" enctype="multipart/form-data">
+    <form method="post" action="options.php" enctype="multipart/form-data" id="devapress-settings-form">
         <?php settings_fields('devapress_settings_group'); ?>
 
         <div id="tab-dashboard" class="devapress-tab-content">
-            <?php include DEVAPRESS_VIEW_DIR . 'tab-dashboard.php'; ?>
+            <div class="devapress-tab-layout">
+                <div class="devapress-tab-layout__settings">
+                    <?php include DEVAPRESS_VIEW_DIR . 'tab-dashboard.php'; ?>
+                </div>
+                <div class="devapress-tab-layout__preview">
+                    <?php
+                    $section = 'dashboard';
+                    include DEVAPRESS_VIEW_DIR . 'partials/live-preview.php';
+                    ?>
+                </div>
+            </div>
         </div>
 
         <div id="tab-login" class="devapress-tab-content" style="display:none;">
-            <?php include DEVAPRESS_VIEW_DIR . 'tab-login.php'; ?>
+            <div class="devapress-tab-layout">
+                <div class="devapress-tab-layout__settings">
+                    <?php include DEVAPRESS_VIEW_DIR . 'tab-login.php'; ?>
+                </div>
+                <div class="devapress-tab-layout__preview">
+                    <?php
+                    $section = 'login';
+                    include DEVAPRESS_VIEW_DIR . 'partials/live-preview.php';
+                    ?>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab-about" class="devapress-tab-content" style="display:none;">
+            <?php include DEVAPRESS_VIEW_DIR . 'tab-about.php'; ?>
         </div>
 
         <div id="tab-reset" class="devapress-tab-content" style="display:none;">
             <?php include DEVAPRESS_VIEW_DIR . 'reset-options.php'; ?>
         </div>
 
-        <?php submit_button('ذخیره تغییرات'); ?>
+        <div class="devapress-form-footer">
+            <?php submit_button('ذخیره تغییرات'); ?>
+        </div>
     </form>
 </div>

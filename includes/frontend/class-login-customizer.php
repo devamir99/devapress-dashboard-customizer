@@ -44,7 +44,7 @@ class Devapress_Login_Customizer {
         wp_register_style('devapress-login-custom', false);
         wp_enqueue_style('devapress-login-custom');
 
-        $css = $this->build_login_css($settings);
+        $css = self::compile_login_css($settings);
         if ($css) {
             wp_add_inline_style('devapress-login-custom', $css);
         }
@@ -53,7 +53,7 @@ class Devapress_Login_Customizer {
     /**
      * @param array<string, mixed> $settings
      */
-    private function build_login_css($settings) {
+    public static function compile_login_css($settings) {
         $css = '';
 
         $logo_id  = $settings['logo_id'] ?? '';

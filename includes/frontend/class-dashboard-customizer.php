@@ -31,8 +31,8 @@ class Devapress_Dashboard_Customizer {
         wp_register_style('devapress-dashboard', false);
         wp_enqueue_style('devapress-dashboard');
 
-        $css = $this->build_font_face($settings);
-        $css .= $this->build_dashboard_css($settings);
+        $css = self::compile_font_face($settings);
+        $css .= self::compile_dashboard_css($settings);
 
         if ($css) {
             wp_add_inline_style('devapress-dashboard', $css);
@@ -57,10 +57,10 @@ class Devapress_Dashboard_Customizer {
         wp_register_style('devapress-login-font', false);
         wp_enqueue_style('devapress-login-font');
 
-        $font_name = $this->resolve_font_name($settings);
+        $font_name = self::resolve_font_name($settings);
         $font_size = $settings['font_size'] ?? '14';
 
-        $css = $this->build_font_face($settings, 'DevapressLoginFont');
+        $css = self::compile_font_face($settings, 'DevapressLoginFont');
         $css .= "
             body.login.devapress-customized #login,
             body.login.devapress-customized #loginform,
@@ -80,7 +80,7 @@ class Devapress_Dashboard_Customizer {
     /**
      * @param array<string, mixed> $settings
      */
-    private function build_font_face($settings, $fallback_name = 'DevapressCustomFont') {
+    public static function compile_font_face($settings, $fallback_name = 'DevapressCustomFont') {
         $font_file_url = $settings['font_file'] ?? '';
         if (!$font_file_url) {
             return '';
@@ -88,7 +88,7 @@ class Devapress_Dashboard_Customizer {
 
         $font_name = 'DevapressCustomFont';
         $ext       = pathinfo($font_file_url, PATHINFO_EXTENSION);
-        $format    = $this->get_font_format($ext);
+        $format    = self::get_font_format($ext);
 
         return "
             @font-face {
@@ -103,8 +103,8 @@ class Devapress_Dashboard_Customizer {
     /**
      * @param array<string, mixed> $settings
      */
-    private function build_dashboard_css($settings) {
-        $font_name              = $this->resolve_font_name($settings);
+    public static function compile_dashboard_css($settings) {
+        $font_name              = self::resolve_font_name($settings);
         $font_size              = esc_attr($settings['font_size'] ?? '14');
         $font_color             = esc_attr($settings['font_color'] ?? '#f0f0f1');
         $font_color_hover       = esc_attr($settings['font_color_hover'] ?? '#72aee6');
@@ -173,14 +173,14 @@ class Devapress_Dashboard_Customizer {
     /**
      * @param array<string, mixed> $settings
      */
-    private function resolve_font_name($settings) {
+    private static function resolve_font_name($settings) {
         if (!empty($settings['font_file'])) {
             return 'DevapressCustomFont';
         }
         return 'sans-serif';
     }
 
-    private function get_font_format($ext) {
+    private static function get_font_format($ext) {
         switch (strtolower($ext)) {
             case 'woff2':
                 return 'woff2';

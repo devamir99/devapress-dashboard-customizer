@@ -21,9 +21,11 @@ class Devapress_Core {
     private function includes() {
         require_once DEVAPRESS_PLUGIN_DIR . 'includes/class-devapress-presets.php';
         require_once DEVAPRESS_PLUGIN_DIR . 'includes/class-devapress-settings.php';
+        require_once DEVAPRESS_PLUGIN_DIR . 'includes/class-devapress-css-builder.php';
 
         require_once DEVAPRESS_PLUGIN_DIR . 'includes/admin/class-admin-menu.php';
         require_once DEVAPRESS_PLUGIN_DIR . 'includes/admin/class-admin-settings.php';
+        require_once DEVAPRESS_PLUGIN_DIR . 'includes/admin/class-admin-preview.php';
 
         require_once ABSPATH . 'wp-admin/includes/image.php';
         require_once ABSPATH . 'wp-admin/includes/file.php';
@@ -34,6 +36,10 @@ class Devapress_Core {
 
         if (class_exists('Devapress_Admin_Settings')) {
             new Devapress_Admin_Settings();
+        }
+
+        if (class_exists('Devapress_Admin_Preview')) {
+            new Devapress_Admin_Preview();
         }
 
         if (class_exists('Devapress_Dashboard_Customizer')) {
@@ -71,6 +77,33 @@ class Devapress_Core {
             DEVAPRESS_VERSION,
             true
         );
+
+        wp_enqueue_script(
+            'devapress-preview-js',
+            DEVAPRESS_JS_URL . 'preview.js',
+            ['jquery', 'devapress-admin-js'],
+            DEVAPRESS_VERSION,
+            true
+        );
+
+        $dashboard_presets = Devapress_Presets::dashboard_presets();
+        $login_presets     = Devapress_Presets::login_presets();
+
+        foreach ($dashboard_presets as $id => $preset) {
+            unset($dashboard_presets[$id]['label'], $dashboard_presets[$id]['description']);
+        }
+        foreach ($login_presets as $id => $preset) {
+            unset($login_presets[$id]['label'], $login_presets[$id]['description']);
+        }
+
+        wp_localize_script('devapress-preview-js', 'devapressPreview', [
+            'ajaxUrl'          => admin_url('admin-ajax.php'),
+            'nonce'            => Devapress_Admin_Preview::preview_nonce(),
+            'loginPreviewUrl'  => Devapress_Admin_Preview::login_preview_url(),
+            'loginUrl'         => wp_login_url(),
+            'dashboardPresets' => $dashboard_presets,
+            'loginPresets'     => $login_presets,
+        ]);
     }
 
     public function enqueue_wp_media($hook) {

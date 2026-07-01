@@ -50,61 +50,62 @@ $val = static function ($key, $default = '') use ($resolved, $overrides) {
         <div class="devapress-setting-card">
             <h3>سایز فونت</h3>
             <input type="number" name="devapress_settings[dashboard][overrides][font_size]"
-                   value="<?php echo esc_attr($val('font_size', '14')); ?>" class="devapress-input" min="10" max="24"> px
+                   value="<?php echo esc_attr($val('font_size', '14')); ?>" class="devapress-input" min="10" max="24"
+                   data-dp-preview="font_size" data-dp-section="dashboard"> px
         </div>
 
         <div class="devapress-setting-card">
             <h3>رنگ متن منو (عادی)</h3>
             <input type="color" name="devapress_settings[dashboard][overrides][font_color]"
-                   value="<?php echo esc_attr($val('font_color', '#f0f0f1')); ?>">
+                   value="<?php echo esc_attr($val('font_color', '#f0f0f1')); ?>" data-dp-preview="font_color" data-dp-section="dashboard">
         </div>
 
         <div class="devapress-setting-card">
             <h3>رنگ متن منو (هاور)</h3>
             <input type="color" name="devapress_settings[dashboard][overrides][font_color_hover]"
-                   value="<?php echo esc_attr($val('font_color_hover', '#72aee6')); ?>">
+                   value="<?php echo esc_attr($val('font_color_hover', '#72aee6')); ?>" data-dp-preview="font_color_hover" data-dp-section="dashboard">
         </div>
 
         <div class="devapress-setting-card">
             <h3>رنگ متن منو (فعال)</h3>
             <input type="color" name="devapress_settings[dashboard][overrides][font_color_active]"
-                   value="<?php echo esc_attr($val('font_color_active', '#ffffff')); ?>">
+                   value="<?php echo esc_attr($val('font_color_active', '#ffffff')); ?>" data-dp-preview="font_color_active" data-dp-section="dashboard">
         </div>
 
         <div class="devapress-setting-card">
             <h3>پس‌زمینه منو (عادی)</h3>
             <input type="color" name="devapress_settings[dashboard][overrides][menu_color]"
-                   value="<?php echo esc_attr($val('menu_color', '#1d2327')); ?>">
+                   value="<?php echo esc_attr($val('menu_color', '#1d2327')); ?>" data-dp-preview="menu_color" data-dp-section="dashboard">
         </div>
 
         <div class="devapress-setting-card">
             <h3>پس‌زمینه منو (هاور)</h3>
             <input type="color" name="devapress_settings[dashboard][overrides][menu_hover_color]"
-                   value="<?php echo esc_attr($val('menu_hover_color', '#2c3338')); ?>">
+                   value="<?php echo esc_attr($val('menu_hover_color', '#2c3338')); ?>" data-dp-preview="menu_hover_color" data-dp-section="dashboard">
         </div>
 
         <div class="devapress-setting-card">
             <h3>پس‌زمینه منو (فعال)</h3>
             <input type="color" name="devapress_settings[dashboard][overrides][menu_active_color]"
-                   value="<?php echo esc_attr($val('menu_active_color', '#2271b1')); ?>">
+                   value="<?php echo esc_attr($val('menu_active_color', '#2271b1')); ?>" data-dp-preview="menu_active_color" data-dp-section="dashboard">
         </div>
 
         <div class="devapress-setting-card">
             <h3>رنگ آیکن (عادی)</h3>
             <input type="color" name="devapress_settings[dashboard][overrides][icon_color]"
-                   value="<?php echo esc_attr($val('icon_color', '#a7aaad')); ?>">
+                   value="<?php echo esc_attr($val('icon_color', '#a7aaad')); ?>" data-dp-preview="icon_color" data-dp-section="dashboard">
         </div>
 
         <div class="devapress-setting-card">
             <h3>رنگ آیکن (هاور)</h3>
             <input type="color" name="devapress_settings[dashboard][overrides][icon_hover_color]"
-                   value="<?php echo esc_attr($val('icon_hover_color', '#72aee6')); ?>">
+                   value="<?php echo esc_attr($val('icon_hover_color', '#72aee6')); ?>" data-dp-preview="icon_hover_color" data-dp-section="dashboard">
         </div>
 
         <div class="devapress-setting-card">
             <h3>رنگ آیکن (فعال)</h3>
             <input type="color" name="devapress_settings[dashboard][overrides][icon_active_color]"
-                   value="<?php echo esc_attr($val('icon_active_color', '#ffffff')); ?>">
+                   value="<?php echo esc_attr($val('icon_active_color', '#ffffff')); ?>" data-dp-preview="icon_active_color" data-dp-section="dashboard">
         </div>
     </div>
 
