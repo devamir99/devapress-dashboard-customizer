@@ -42,17 +42,22 @@ $label      = $section === 'dashboard' ? 'پیش‌نمایش منوی داشب�
             </div>
         </div>
     <?php else : ?>
-        <div class="devapress-mock-login" data-preview-target="login">
-            <div class="devapress-mock-login__logo"></div>
-            <div class="devapress-mock-login__form">
-                <div class="devapress-mock-login__label"></div>
-                <div class="devapress-mock-login__input"></div>
-                <div class="devapress-mock-login__label"></div>
-                <div class="devapress-mock-login__input"></div>
-                <div class="devapress-mock-login__button">ورود</div>
-            </div>
-            <div class="devapress-mock-login__links">
-                <span></span><span></span>
+        <div class="devapress-mock-login devapress-mock-login--layout-center" data-preview-target="login" data-login-layout="center">
+            <div class="devapress-mock-login__inner">
+                <div class="devapress-mock-login__panel devapress-mock-login__panel--visual" aria-hidden="true"></div>
+                <div class="devapress-mock-login__panel devapress-mock-login__panel--form">
+                    <div class="devapress-mock-login__logo"></div>
+                    <div class="devapress-mock-login__form">
+                        <div class="devapress-mock-login__label"></div>
+                        <div class="devapress-mock-login__input"></div>
+                        <div class="devapress-mock-login__label"></div>
+                        <div class="devapress-mock-login__input"></div>
+                        <div class="devapress-mock-login__button">ورود</div>
+                    </div>
+                    <div class="devapress-mock-login__links">
+                        <span></span><span></span>
+                    </div>
+                </div>
             </div>
         </div>
 
