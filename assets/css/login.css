@@ -1,15 +1,85 @@
-form#loginform , form#loginform input , form#loginform input:focus{
-    border: none !important;
-}
-body.login label{
-    margin-bottom: 10px !important;
-}
-p.forgetmenot {
-    padding-top: 10px;
-}
-
-input#user_login:focus , input#user_pass:focus {
-    box-shadow: none !important;
-    border-color: transparent !important;
-}
-
+/* Base login polish — structural layout in inline CSS per preset */
+
+body.login.devapress-customized {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+body.login.devapress-customized #login {
+    box-sizing: border-box;
+}
+
+body.login.devapress-customized #login h1 a {
+    display: block;
+    text-indent: -9999px;
+    overflow: hidden;
+    outline: none;
+    box-shadow: none;
+}
+
+body.login.devapress-customized form#loginform {
+    margin-top: 0;
+    box-sizing: border-box;
+}
+
+body.login.devapress-customized form#loginform label {
+    display: block;
+    font-size: 14px;
+}
+
+body.login.devapress-customized form#loginform input[type="text"],
+body.login.devapress-customized form#loginform input[type="password"] {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+}
+
+body.login.devapress-customized form#loginform .forgetmenot {
+    margin-bottom: 16px;
+}
+
+body.login.devapress-customized form#loginform .forgetmenot label {
+    display: inline;
+    font-weight: 400;
+    font-size: 13px;
+}
+
+body.login.devapress-customized #nav,
+body.login.devapress-customized #backtoblog {
+    margin-top: 12px;
+    font-size: 13px;
+    padding: 0;
+}
+
+body.login.devapress-customized #nav a,
+body.login.devapress-customized #backtoblog a {
+    text-decoration: none;
+    transition: opacity 0.15s ease;
+}
+
+body.login.devapress-customized #nav a:hover,
+body.login.devapress-customized #backtoblog a:hover {
+    opacity: 0.75;
+}
+
+body.login.devapress-customized .privacy-policy-page-link {
+    text-align: center;
+}
+
+body.login.devapress-customized .language-switcher {
+    position: relative;
+    z-index: 10;
+}
+
+/* Split: ensure WP default login positioning doesn't fight our layout */
+body.login.devapress-layout-split #login_error,
+body.login.devapress-layout-split .message,
+body.login.devapress-layout-split .success {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body.login.devapress-layout-split.interim-login #login {
+    padding-top: 48px !important;
+}
+
