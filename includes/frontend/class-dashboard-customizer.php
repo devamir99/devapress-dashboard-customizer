@@ -1,207 +1,195 @@
 <?php
-    if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 
-class Devapress_Dashboard_Customizer
-{
+class Devapress_Dashboard_Customizer {
 
-    public function __construct()
-    {
-        // اعمال تغییرات روی داشبورد
+    public function __construct() {
         add_action('admin_enqueue_scripts', [$this, 'apply_dashboard_customizations'], 20);
-
-        // اعمال تغییرات روی صفحه لاگین
-        add_action('login_enqueue_scripts', [$this, 'apply_login_customizations'], 20);
-
-//        add_action('wp_enqueue_scripts', [$this, 'apply_frontend_customizations'], 20);
-
+        add_action('login_enqueue_scripts', [$this, 'apply_login_font'], 20);
+        add_filter('admin_body_class', [$this, 'add_body_class']);
     }
-    public function apply_dashboard_customizations()
-    {
-        $custom_css = '';
 
-        // تنظیمات فونت
-        $available_fonts = [
-            'vazir'     => DEVAPRESS_FONTS_URL . '/Badr/Font/badr.com.woff',
-            'shabnam'   => DEVAPRESS_FONTS_URL . '/IranNastaliq.ttf',
-            'iransans'  => DEVAPRESS_FONTS_URL . '/IRANSans.ttf',
-            'tahoma'    => DEVAPRESS_FONTS_URL . '/Tahoma.ttf',
-        ];
-
-        $font_file_url = get_option('devapress_font_file', '');
-        if ($font_file_url) {
-            $font_name = 'DevapressCustomFont';
-        } else {
-            $font_key = get_option('devapress_font', '');
-            if ($font_key && isset($available_fonts[$font_key])) {
-                $font_file_url = $available_fonts[$font_key];
-                $font_name = ucfirst($font_key);
-            } else {
-                $font_file_url = '';
-                $font_name = 'sans-serif';
-            }
+    public function add_body_class($classes) {
+        if (Devapress_Settings::is_active('dashboard')) {
+            $classes .= ' devapress-customized';
         }
-
-        // @font-face
-        if ($font_file_url) {
-            $ext = pathinfo($font_file_url, PATHINFO_EXTENSION);
-            $format = $this->get_font_format($ext);
-            $custom_css .= "
-                @font-face {
-                    font-family: '{$font_name}';
-                    src: url('{$font_file_url}') format('{$format}');
-                    font-weight: normal;
-                    font-style: normal;
-                }";
-        }
-
-        // سایر تنظیمات
-        $font_size = get_option('devapress_font_size', '14');
-        $font_color = get_option('devapress_font_color', '#000000');
-        $font_color_hover = get_option('devapress_font_color_hover', '#2271b1');
-        $font_color_active = get_option('devapress_font_color_active', '#2271b1');
-        $icon_color = get_option('devapress_icon_color', '#9ca2a7');
-        $icon_color_hover = get_option('devapress_icon_hover_color', '#9ca2a7');
-        $background_menu_color = get_option('devapress_menu_color', '#1d2327');
-        $background_menu_hover_color = get_option('devapress_menu_hover_color', '#1d2327');
-        $background_menu_active_color = get_option('devapress_menu_active_color', '#9ca2a7');
-        $icon_color_active = get_option('devapress_icon_active_color', '#9ca2a7');
-        $apply_globally = get_option('devapress_apply_font_globally', 0);
-
-        $custom_css .= "
-        .wrap, #adminmenu, #adminmenu * ,h1 ,#submit{
-            font-family: '{$font_name}', sans-serif !important;
-            font-size: {$font_size}px !important;
-        }
-        #adminmenu li.menu-top > a, #adminmenu li a {
-            color: {$font_color} !important;
-        }
-        #adminmenu li.menu-top > a:hover, #adminmenu li a:hover {
-            color: {$font_color_hover} !important;
-        }
-        #adminmenu li.menu-top.current > a,
-        #adminmenu li.menu-top.wp-has-current-submenu > a ,
-        #adminmenu .wp-submenu li.current a {
-            color: {$font_color_active} !important;
-        }
-        #adminmenu .wp-menu-image:before { color: {$icon_color} !important; }
-        #adminmenu li.menu-top:hover .wp-menu-image:before { color: {$icon_color_hover} !important; }
-        #adminmenu li.menu-top.current .wp-menu-image:before,
-        #adminmenu li.menu-top.wp-has-current-submenu .wp-menu-image:before ,
-        #adminmenu .wp-submenu li.current .wp-menu-image:before {
-            color: {$icon_color_active} !important;
-        }
-        #adminmenu,
-        #adminmenuback,
-        #adminmenuwrap ,
-        #adminmenu .wp-submenu{
-            background: {$background_menu_color} !important;
-        }
-        #adminmenu li.menu-top:hover,
-        #adminmenu li.menu-top.menu-top-hover > a,
-        #adminmenu .wp-submenu li a:hover,
-        #adminmenu li.wp-has-submenu.opensub > a{
-            background-color: $background_menu_hover_color !important;
-        }
-        #adminmenu li.menu-top.current > a,
-        #adminmenu li.menu-top.wp-has-current-submenu > a ,
-        #adminmenu .wp-submenu li.current a{
-            background-color: $background_menu_active_color !important;
-        }
-        ";
-
-        $selectors = '#adminmenu, #adminmenu *';
-        if ($apply_globally) {
-            $selectors = '.wrap, #adminmenu, #adminmenu *, h1, #submit';
-        }
-        
-
-        $custom_css .= "
-        {$selectors} {
-                font-family: '{$font_name}', sans-serif !important;
-                font-size: {$font_size}px !important;
-                
-            }
-        ";
-
-        if ($custom_css) {
-            wp_add_inline_style('devapress-admin-css', $custom_css);
-        }
-
+        return $classes;
     }
-    public function apply_login_customizations() {
-        $login_font_enable = get_option('devapress_login_font_enable', '0');
-        if (!$login_font_enable) return;
 
-        $font_file_url = get_option('devapress_font_file', '');
-        $available_fonts = [
-            'vazir' => DEVAPRESS_FONTS_URL . '/Badr/Font/badr.com.woff',
-            'shabnam' => DEVAPRESS_FONTS_URL . '/IranNastaliq.ttf',
-            'iransans' => DEVAPRESS_FONTS_URL . '/IRANSans.ttf',
-            'tahoma' => DEVAPRESS_FONTS_URL . '/Tahoma.ttf',
-        ];
-        $font_key = get_option('devapress_font', '');
-
-        if ($font_file_url) {
-            $font_name = 'DevapressLoginFont';
-        } elseif ($font_key && isset($available_fonts[$font_key])) {
-            $font_file_url = $available_fonts[$font_key];
-            $font_name = ucfirst($font_key);
-        } else {
-            $font_name = 'sans-serif';
+    public function apply_dashboard_customizations() {
+        if (!Devapress_Settings::is_active('dashboard')) {
+            return;
         }
 
-        $font_size = get_option('devapress_font_size', '14');
-
-        $css = '';
-        if ($font_file_url) {
-            $ext = pathinfo($font_file_url, PATHINFO_EXTENSION);
-            $format = $this->get_font_format($ext);
-            $css .= "
-        @font-face {
-            font-family: '{$font_name}';
-            src: url('{$font_file_url}') format('{$format}');
-            font-weight: normal;
-            font-style: normal;
-        }";
+        $settings = Devapress_Settings::get_resolved('dashboard');
+        if (empty($settings)) {
+            return;
         }
 
+        wp_register_style('devapress-dashboard', false);
+        wp_enqueue_style('devapress-dashboard');
+
+        $css = $this->build_font_face($settings);
+        $css .= $this->build_dashboard_css($settings);
+
+        if ($css) {
+            wp_add_inline_style('devapress-dashboard', $css);
+        }
+    }
+
+    public function apply_login_font() {
+        if (!Devapress_Settings::is_active('login') && !Devapress_Settings::is_active('dashboard')) {
+            return;
+        }
+
+        $dashboard = Devapress_Settings::get_all()['dashboard'] ?? [];
+        if (empty($dashboard['login_font_enable'])) {
+            return;
+        }
+
+        $settings = Devapress_Settings::get_resolved('dashboard');
+        if (empty($settings)) {
+            return;
+        }
+
+        wp_register_style('devapress-login-font', false);
+        wp_enqueue_style('devapress-login-font');
+
+        $font_name = $this->resolve_font_name($settings);
+        $font_size = $settings['font_size'] ?? '14';
+
+        $css = $this->build_font_face($settings, 'DevapressLoginFont');
         $css .= "
-            body.login #login,
-            body.login #loginform,
-            body.login #loginform input,
-            body.login #loginform label,
-            body.login #nav,
-            body.login #backtoblog,
-            body.login h1 a {
-                font-family: '{$font_name}', sans-serif !important;
-                font-size: {$font_size}px !important;
+            body.login.devapress-customized #login,
+            body.login.devapress-customized #loginform,
+            body.login.devapress-customized #loginform input,
+            body.login.devapress-customized #loginform label,
+            body.login.devapress-customized #nav,
+            body.login.devapress-customized #backtoblog,
+            body.login.devapress-customized h1 a {
+                font-family: '{$font_name}', sans-serif;
+                font-size: {$font_size}px;
             }
         ";
 
-
-
-        wp_add_inline_style('login', $css);
+        wp_add_inline_style('devapress-login-font', $css);
     }
-    private function get_font_format($ext)
-    {
+
+    /**
+     * @param array<string, mixed> $settings
+     */
+    private function build_font_face($settings, $fallback_name = 'DevapressCustomFont') {
+        $font_file_url = $settings['font_file'] ?? '';
+        if (!$font_file_url) {
+            return '';
+        }
+
+        $font_name = 'DevapressCustomFont';
+        $ext       = pathinfo($font_file_url, PATHINFO_EXTENSION);
+        $format    = $this->get_font_format($ext);
+
+        return "
+            @font-face {
+                font-family: '{$font_name}';
+                src: url('{$font_file_url}') format('{$format}');
+                font-weight: normal;
+                font-style: normal;
+            }
+        ";
+    }
+
+    /**
+     * @param array<string, mixed> $settings
+     */
+    private function build_dashboard_css($settings) {
+        $font_name              = $this->resolve_font_name($settings);
+        $font_size              = esc_attr($settings['font_size'] ?? '14');
+        $font_color             = esc_attr($settings['font_color'] ?? '#f0f0f1');
+        $font_color_hover       = esc_attr($settings['font_color_hover'] ?? '#72aee6');
+        $font_color_active      = esc_attr($settings['font_color_active'] ?? '#ffffff');
+        $icon_color             = esc_attr($settings['icon_color'] ?? '#a7aaad');
+        $icon_color_hover       = esc_attr($settings['icon_hover_color'] ?? '#72aee6');
+        $icon_color_active      = esc_attr($settings['icon_active_color'] ?? '#ffffff');
+        $background_menu_color  = esc_attr($settings['menu_color'] ?? '#1d2327');
+        $background_menu_hover  = esc_attr($settings['menu_hover_color'] ?? '#2c3338');
+        $background_menu_active = esc_attr($settings['menu_active_color'] ?? '#2271b1');
+        $apply_globally         = !empty($settings['apply_font_globally']);
+
+        $font_selectors = '#adminmenu, #adminmenu *';
+        if ($apply_globally) {
+            $font_selectors = '.wrap, #adminmenu, #adminmenu *, h1, #submit, .button';
+        }
+
+        return "
+            {$font_selectors} {
+                font-family: '{$font_name}', sans-serif;
+                font-size: {$font_size}px;
+            }
+            #adminmenu li.menu-top > a,
+            #adminmenu li a {
+                color: {$font_color};
+            }
+            #adminmenu li.menu-top > a:hover,
+            #adminmenu li a:hover {
+                color: {$font_color_hover};
+            }
+            #adminmenu li.menu-top.current > a,
+            #adminmenu li.menu-top.wp-has-current-submenu > a,
+            #adminmenu .wp-submenu li.current a {
+                color: {$font_color_active};
+            }
+            #adminmenu .wp-menu-image:before {
+                color: {$icon_color};
+            }
+            #adminmenu li.menu-top:hover .wp-menu-image:before {
+                color: {$icon_color_hover};
+            }
+            #adminmenu li.menu-top.current .wp-menu-image:before,
+            #adminmenu li.menu-top.wp-has-current-submenu .wp-menu-image:before {
+                color: {$icon_color_active};
+            }
+            #adminmenu,
+            #adminmenuback,
+            #adminmenuwrap,
+            #adminmenu .wp-submenu {
+                background: {$background_menu_color};
+            }
+            #adminmenu li.menu-top:hover,
+            #adminmenu li.menu-top.menu-top-hover > a,
+            #adminmenu .wp-submenu li a:hover,
+            #adminmenu li.wp-has-submenu.opensub > a {
+                background-color: {$background_menu_hover};
+            }
+            #adminmenu li.menu-top.current > a,
+            #adminmenu li.menu-top.wp-has-current-submenu > a,
+            #adminmenu .wp-submenu li.current a {
+                background-color: {$background_menu_active};
+            }
+        ";
+    }
+
+    /**
+     * @param array<string, mixed> $settings
+     */
+    private function resolve_font_name($settings) {
+        if (!empty($settings['font_file'])) {
+            return 'DevapressCustomFont';
+        }
+        return 'sans-serif';
+    }
+
+    private function get_font_format($ext) {
         switch (strtolower($ext)) {
             case 'woff2':
                 return 'woff2';
             case 'woff':
                 return 'woff';
-            case 'ttf':
-                return 'truetype';
             case 'otf':
                 return 'opentype';
             default:
                 return 'truetype';
         }
     }
-
 }
-
-
-
-
-
-

@@ -1,36 +1,34 @@
 <div class="devapress-setting-card">
-    <h1>ریست تنظیمات</h1>
+    <h2>بازنشانی تنظیمات</h2>
 
     <div class="devapress-reset-section">
-        <p>اگر می‌خواهید تنظیمات فونت را به حالت پیش‌فرض بازگردانید:</p>
-        <a href="<?php echo esc_url( wp_nonce_url(
-            admin_url('admin.php?page=devapress-customizer&action=reset_devapress_font'),
-            'devapress_reset_font'
-        )); ?>"
-           class="button-reset-option">
-            ریست فونت
+        <p>تنظیمات داشبورد (طرح و سفارشی‌سازی) به حالت اولیه برمی‌گردد.</p>
+        <a href="<?php echo esc_url(wp_nonce_url(
+            Devapress_Settings::admin_url(['action' => 'reset_devapress_dashboard']),
+            'devapress_reset_dashboard'
+        )); ?>" class="button button-secondary">
+            بازنشانی داشبورد
         </a>
     </div>
 
     <div class="devapress-reset-section">
-        <p>بازنشانی تنظیمات رنگ به حالت پیش‌فرض:</p>
-        <a href="<?php echo esc_url( wp_nonce_url(
-            admin_url('admin.php?page=devapress-customizer&action=reset_devapress_colors'),
-            'devapress_reset_colors'
-        )); ?>"
-           class="button-reset-option">
-            ریست رنگ ها
-        </a>
-    </div>
-
-    <div class="devapress-reset-section">
-        <p>بازنشانی تنظیمات صفحه ورود به حالت پیش‌فرض:</p>
-        <a href="<?php echo esc_url( wp_nonce_url(
-            admin_url('admin.php?page=devapress-customizer&action=reset_devapress_login'),
+        <p>تنظیمات صفحه لاگین به حالت اولیه برمی‌گردد.</p>
+        <a href="<?php echo esc_url(wp_nonce_url(
+            Devapress_Settings::admin_url(['action' => 'reset_devapress_login']),
             'devapress_reset_login'
-        )); ?>"
-           class="button-reset-option">
-            ریست صفحه لاگین
+        )); ?>" class="button button-secondary">
+            بازنشانی صفحه لاگین
+        </a>
+    </div>
+
+    <div class="devapress-reset-section">
+        <p>همه تنظیمات افزونه پاک می‌شود و هیچ استایلی اعمال نخواهد شد.</p>
+        <a href="<?php echo esc_url(wp_nonce_url(
+            Devapress_Settings::admin_url(['action' => 'reset_devapress_all']),
+            'devapress_reset_all'
+        )); ?>" class="button button-reset-option"
+           onclick="return confirm('آیا از بازنشانی کامل مطمئن هستید؟');">
+            بازنشانی کامل
         </a>
     </div>
 </div>
