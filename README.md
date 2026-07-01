@@ -117,6 +117,27 @@ devapress-dashboard-customizer/
 
 ---
 
+## Tests
+
+PHPUnit unit tests cover presets, settings save flow, export/import, CSS generation, and regression cases.
+
+```bash
+cd wp-content/plugins/devapress-dashboard-customizer
+composer install
+composer test
+# or: vendor/bin/phpunit -c tests/phpunit.xml
+```
+
+| Step | File | Covers |
+|---|---|---|
+| 1 | `tests/PresetsTest.php` | 6 preset definitions |
+| 2 | `tests/SettingsTest.php` | save, sanitize, merge, reset |
+| 3 | `tests/ExportImportTest.php` | JSON export/import + demos |
+| 4 | `tests/CssBuilderTest.php` | CSS output per preset |
+| 5 | `tests/RegressionTest.php` | opt-in, form submit bugs |
+
+---
+
 ## Changelog
 
 ### 2.2.0
@@ -124,6 +145,8 @@ devapress-dashboard-customizer/
 - Demo bundles for quick setup
 - Preset gallery with SVG screenshots
 - Tools tab, uninstall cleanup, `.gitignore`
+- PHPUnit test suite (44 tests)
+- Fix: login CSS fatal error (`hex2rgba` in static context)
 
 ### 2.1.0
 - Live preview (mock + login iframe)

@@ -77,8 +77,8 @@ class Devapress_Login_Customizer {
         $gradient_enable  = !empty($settings['bg_gradient_enable']);
         $grad_opacity     = isset($settings['bg_gradient_opacity']) ? (int) $settings['bg_gradient_opacity'] : 100;
         $opacity          = max(0, min(1, $grad_opacity / 100));
-        $color1           = $this->hex2rgba($grad_color1, $opacity);
-        $color2           = $this->hex2rgba($grad_color2, $opacity);
+        $color1           = self::hex2rgba($grad_color1, $opacity);
+        $color2           = self::hex2rgba($grad_color2, $opacity);
         $bg_color         = $settings['bg_color'] ?? '';
 
         $background_layers = [];
@@ -169,7 +169,7 @@ class Devapress_Login_Customizer {
         return $css;
     }
 
-    public function hex2rgba($color, $opacity = 1) {
+    public static function hex2rgba($color, $opacity = 1) {
         $color = str_replace('#', '', (string) $color);
         if (strlen($color) === 6) {
             $hex = str_split($color, 2);
