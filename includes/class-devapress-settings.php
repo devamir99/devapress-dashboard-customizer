@@ -200,17 +200,19 @@ class Devapress_Settings {
 
         $color_keys = [
             'bg_color', 'bg_gradient_color1', 'bg_gradient_color2',
-            'login_form_bg', 'login_form_bg2',
+            'login_form_bg', 'login_form_bg2', 'split_form_bg',
             'login_btn_bg', 'login_btn_color',
             'login_btn_hover_bg', 'login_btn_hover_color',
             'login_label_color',
         ];
         $number_keys = [
-            'bg_gradient_opacity', 'login_form_radius', 'login_input_radius', 'login_btn_radius',
+            'bg_gradient_opacity', 'login_form_radius', 'login_input_radius', 'login_btn_radius', 'fullscreen_overlay',
         ];
         $select_keys = [
-            'bg_gradient_type' => ['linear', 'radial', 'conic'],
-            'bg_size'          => ['cover', 'contain', 'auto'],
+            'bg_gradient_type'      => ['linear', 'radial', 'conic'],
+            'bg_size'               => ['cover', 'contain', 'auto'],
+            'login_layout'          => ['center', 'split', 'fullscreen'],
+            'split_panel_position'  => ['left', 'right'],
         ];
         $bool_keys = ['bg_gradient_enable', 'login_form_glass'];
 
