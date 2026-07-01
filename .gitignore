@@ -1,0 +1,14 @@
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Font download artifacts
+assets/fonts/**/*.url
+assets/fonts/**/!pd.nfo
+assets/fonts/**/read me!.txt
+
+# OS / editor
+*.log
+*.swp

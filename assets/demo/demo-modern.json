@@ -1,0 +1,26 @@
+{
+  "schema": "devapress-export",
+  "export_version": 1,
+  "plugin_version": "2.2.0",
+  "label": "دمو مدرن",
+  "settings": {
+    "version": 2,
+    "dashboard": {
+      "preset": "ocean-blue",
+      "overrides": {},
+      "font_file": "",
+      "login_font_enable": true
+    },
+    "login": {
+      "preset": "glass-modern",
+      "overrides": {},
+      "bg_image_id": 0,
+      "logo_id": 0
+    }
+  },
+  "media_urls": {
+    "font_file": "",
+    "bg_image": "",
+    "logo": ""
+  }
+}

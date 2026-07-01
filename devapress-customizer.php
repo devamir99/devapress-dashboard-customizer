@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
 /*
 Plugin Name: devapress customizer
 Description: پلاگینی برای شخصی‌سازی داشبورد و صفحه لاگین وردپرس (فونت، رنگ، preset و کاستوم)
-Version: 2.1.0
+Version: 2.2.0
 Author: amir falahi
 Text Domain: devapress-customizer
 */
@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('DEVAPRESS_VERSION', '2.1.0');
+define('DEVAPRESS_VERSION', '2.2.0');
 define('DEVAPRESS_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('DEVAPRESS_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('DEVAPRESS_ASSETS_URL', DEVAPRESS_PLUGIN_URL . 'assets/');

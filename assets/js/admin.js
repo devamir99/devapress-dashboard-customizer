@@ -63,4 +63,21 @@ jQuery(document).ready(function ($) {
         $('#' + target).val('').trigger('change');
         $('#' + preview).remove();
     });
+
+    // Apply preset from gallery (about tab)
+    $('.devapress-apply-preset').on('click', function () {
+        var section = $(this).data('section');
+        var preset = $(this).data('preset');
+        var tabId = section === 'login' ? '#tab-login' : '#tab-dashboard';
+
+        $('.devapress-nav-tabs .nav-tab').removeClass('nav-tab-active');
+        $('.devapress-nav-tabs .nav-tab[href="' + tabId + '"]').addClass('nav-tab-active');
+        $('.devapress-tab-content').hide();
+        $(tabId).show();
+
+        var $radio = $('input[name="devapress_settings[' + section + '][preset]"][value="' + preset + '"]');
+        $radio.prop('checked', true).trigger('change');
+
+        $('html, body').animate({ scrollTop: $(tabId).offset().top - 50 }, 300);
+    });
 });

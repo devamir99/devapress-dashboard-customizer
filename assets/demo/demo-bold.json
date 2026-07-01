@@ -1,0 +1,26 @@
+{
+  "schema": "devapress-export",
+  "export_version": 1,
+  "plugin_version": "2.2.0",
+  "label": "دمو جسور",
+  "settings": {
+    "version": 2,
+    "dashboard": {
+      "preset": "warm-light",
+      "overrides": {},
+      "font_file": "",
+      "login_font_enable": false
+    },
+    "login": {
+      "preset": "gradient-bold",
+      "overrides": {},
+      "bg_image_id": 0,
+      "logo_id": 0
+    }
+  },
+  "media_urls": {
+    "font_file": "",
+    "bg_image": "",
+    "logo": ""
+  }
+}

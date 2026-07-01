@@ -26,6 +26,7 @@ class Devapress_Core {
         require_once DEVAPRESS_PLUGIN_DIR . 'includes/admin/class-admin-menu.php';
         require_once DEVAPRESS_PLUGIN_DIR . 'includes/admin/class-admin-settings.php';
         require_once DEVAPRESS_PLUGIN_DIR . 'includes/admin/class-admin-preview.php';
+        require_once DEVAPRESS_PLUGIN_DIR . 'includes/admin/class-admin-export-import.php';
 
         require_once ABSPATH . 'wp-admin/includes/image.php';
         require_once ABSPATH . 'wp-admin/includes/file.php';
@@ -40,6 +41,10 @@ class Devapress_Core {
 
         if (class_exists('Devapress_Admin_Preview')) {
             new Devapress_Admin_Preview();
+        }
+
+        if (class_exists('Devapress_Export_Import')) {
+            new Devapress_Export_Import();
         }
 
         if (class_exists('Devapress_Dashboard_Customizer')) {

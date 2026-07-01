@@ -37,10 +37,24 @@
         <div class="notice notice-success is-dismissible"><p>تغییرات ذخیره شد.</p></div>
     <?php endif; ?>
 
+    <?php
+    if (!empty($_GET['imported'])) :
+        $msg = !empty($_GET['msg']) ? sanitize_text_field(wp_unslash($_GET['msg'])) : 'تنظیمات وارد شد.';
+        ?>
+        <div class="notice notice-success is-dismissible"><p><?php echo esc_html($msg); ?></p></div>
+    <?php endif;
+
+    if (!empty($_GET['import-error'])) :
+        $msg = !empty($_GET['msg']) ? sanitize_text_field(wp_unslash($_GET['msg'])) : 'خطا در ورود تنظیمات.';
+        ?>
+        <div class="notice notice-error is-dismissible"><p><?php echo esc_html($msg); ?></p></div>
+    <?php endif; ?>
+
     <div class="nav-tab-wrapper devapress-nav-tabs">
         <a href="#tab-dashboard" class="nav-tab nav-tab-active">داشبورد</a>
         <a href="#tab-login" class="nav-tab">صفحه لاگین</a>
         <a href="#tab-about" class="nav-tab">درباره</a>
+        <a href="#tab-tools" class="nav-tab">ابزارها</a>
         <a href="#tab-reset" class="nav-tab">بازنشانی</a>
     </div>
 
@@ -77,6 +91,10 @@
 
         <div id="tab-about" class="devapress-tab-content" style="display:none;">
             <?php include DEVAPRESS_VIEW_DIR . 'tab-about.php'; ?>
+        </div>
+
+        <div id="tab-tools" class="devapress-tab-content" style="display:none;">
+            <?php include DEVAPRESS_VIEW_DIR . 'tab-tools.php'; ?>
         </div>
 
         <div id="tab-reset" class="devapress-tab-content" style="display:none;">

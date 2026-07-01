@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" role="img" aria-label="Classic Clean login preset">
+  <rect width="320" height="200" fill="#f0f0f1"/>
+  <rect x="100" y="28" width="40" height="40" rx="20" fill="#dcdcde"/>
+  <rect x="85" y="82" width="150" height="96" rx="4" fill="#fff" stroke="#c3c4c7"/>
+  <rect x="100" y="98" width="120" height="12" rx="2" fill="#f0f0f1"/>
+  <rect x="100" y="118" width="120" height="12" rx="2" fill="#f0f0f1"/>
+  <rect x="100" y="144" width="120" height="18" rx="4" fill="#2271b1"/>
+</svg>

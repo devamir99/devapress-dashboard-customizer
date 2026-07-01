@@ -1,0 +1,26 @@
+{
+  "schema": "devapress-export",
+  "export_version": 1,
+  "plugin_version": "2.2.0",
+  "label": "دمو مینیمال",
+  "settings": {
+    "version": 2,
+    "dashboard": {
+      "preset": "minimal-dark",
+      "overrides": {},
+      "font_file": "",
+      "login_font_enable": true
+    },
+    "login": {
+      "preset": "classic-clean",
+      "overrides": {},
+      "bg_image_id": 0,
+      "logo_id": 0
+    }
+  },
+  "media_urls": {
+    "font_file": "",
+    "bg_image": "",
+    "logo": ""
+  }
+}

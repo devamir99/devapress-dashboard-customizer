@@ -1,154 +1,153 @@
-# Devapress Customizer
+# Devapress Dashboard Customizer
 
-پلاگین وردپرس برای شخصی‌سازی ظاهر **داشبورد مدیریت** و **صفحه ورود (Login)** — شامل فونت، رنگ، منوی کناری، آیکن‌ها و استایل فرم ورود.
+WordPress plugin to customize the **admin dashboard** and **login page** with presets, live preview, and full override control.
 
 | | |
 |---|---|
-| **نسخه** | 1.0 |
-| **نویسنده** | Amir Falahi |
+| **Version** | 2.2.0 |
+| **Author** | Amir Falahi |
 | **Text Domain** | `devapress-customizer` |
-| **حداقل وردپرس** | 5.0+ |
-| **PHP** | 7.4+ |
+| **Requires WordPress** | 5.0+ |
+| **Requires PHP** | 7.4+ |
+| **License** | GPL v2+ |
 
 ---
 
-## ویژگی‌ها
+## Features
 
-### داشبورد مدیریت
-- آپلود فونت سفارشی (فرمت‌های `ttf`, `otf`, `woff`, `woff2`)
-- تنظیم سایز و رنگ متن منو (حالت عادی، هاور، فعال)
-- شخصی‌سازی رنگ پس‌زمینه منوی کناری (عادی، هاور، فعال)
-- شخصی‌سازی رنگ آیکن‌های منو (عادی، هاور، فعال)
-- اعمال فونت روی کل صفحات داخلی پنل ادمین (اختیاری)
+### Dashboard (3 presets)
+- **Minimal Dark** — professional dark sidebar
+- **Ocean Blue** — dark menu with blue accent
+- **Warm Light** — light sidebar for bright environments
 
-### صفحه ورود
-- آپلود تصویر پس‌زمینه و لوگوی سفارشی (از طریق Media Library وردپرس)
-- رنگ پس‌زمینه و گرادیانت (خطی، دایره‌ای، مخروطی) با تنظیم شفافیت
-- حالت نمایش پس‌زمینه: `cover` / `contain` / `auto`
-- شخصی‌سازی فرم ورود: رنگ، گرادیانت، افکت شیشه‌ای (Glass)
-- تنظیم گردی گوشه‌های فرم، فیلدها و دکمه
-- رنگ دکمه ورود در حالت عادی و هاور
-- اعمال فونت داشبورد روی صفحه لاگین (اختیاری)
+### Login page (3 presets)
+- **Glass Modern** — purple gradient + glass form
+- **Classic Clean** — standard WordPress-style login
+- **Gradient Bold** — bold pink/red gradient
 
-### مدیریت تنظیمات
-- رابط کاربری تب‌بندی‌شده در پنل ادمین
-- ریست جداگانه تنظیمات فونت، رنگ و صفحه لاگین
+### Customization
+- Custom font upload (`ttf`, `otf`, `woff`, `woff2`)
+- Menu colors, icon colors, typography
+- Login background image, logo, gradients, glass effect
+- **Opt-in:** no styles applied until a preset is selected
 
----
-
-## نصب
-
-1. پوشه `devapress-customizer` را در مسیر `wp-content/plugins/` کپی کنید.
-2. از **پیشخوان وردپرس → افزونه‌ها** پلاگین را فعال کنید.
-3. به **تنظیمات → شخصی‌ساز دواپرس** بروید.
+### Admin experience
+- Live mock preview while editing
+- Real login preview via admin-ajax iframe
+- **Export / Import** settings as JSON
+- One-click **demo bundles**
+- Preset gallery with SVG screenshots
 
 ---
 
-## راهنمای استفاده
+## Installation
 
-پس از فعال‌سازی، منوی **شخصی‌ساز دواپرس** در بخش **تنظیمات** ظاهر می‌شود. تنظیمات در چهار تب سازمان‌دهی شده‌اند:
+1. Copy `devapress-dashboard-customizer` to `wp-content/plugins/`
+2. Activate from **Plugins**
+3. Go to **Settings → شخصی‌ساز دواپرس**
 
-| تب | توضیح |
+---
+
+## Usage
+
+| Tab | Description |
 |---|---|
-| **فونت‌ها** | آپلود فونت، سایز، رنگ متن منو، اعمال فونت روی داشبورد و صفحه لاگین |
-| **رنگ‌ها** | رنگ پس‌زمینه و آیکن‌های منوی کناری داشبورد |
-| **صفحه لاگین** | پس‌زمینه، لوگو، گرادیانت، فرم ورود و دکمه |
-| **ریست تنظیمات** | بازگردانی هر بخش به حالت پیش‌فرض |
+| **Dashboard** | Pick a menu preset + customize colors/fonts |
+| **Login** | Pick a login preset + background, form, button |
+| **About** | Gallery of all presets with quick-apply buttons |
+| **Tools** | Export JSON, import settings, load demo bundles |
+| **Reset** | Reset dashboard, login, or all settings |
 
-پس از اعمال تغییرات، دکمه **ذخیره تغییرات** را بزنید.
+Click **ذخیره تغییرات** to apply changes to the live site.
 
 ---
 
-## ساختار فایل‌ها
+## Export / Import
+
+Export downloads a JSON file including:
+- All `devapress_settings` (presets + overrides)
+- Media URLs (font, background, logo) for cross-site migration
+
+Import optionally downloads remote media from exported URLs.
+
+Demo files in `assets/demo/`:
+- `demo-minimal.json` — Minimal Dark + Classic Clean
+- `demo-modern.json` — Ocean Blue + Glass Modern
+- `demo-bold.json` — Warm Light + Gradient Bold
+
+---
+
+## Project structure
 
 ```
-devapress-customizer/
-├── devapress-customizer.php          # فایل اصلی پلاگین
-├── class-core.php                    # بارگذاری ماژول‌ها و ثبت hookها
-├── README.md
-│
+devapress-dashboard-customizer/
+├── devapress-customizer.php
+├── class-core.php
+├── uninstall.php
 ├── assets/
-│   ├── css/
-│   │   ├── admin.css                 # استایل صفحه تنظیمات
-│   │   └── login.css                 # استایل پایه صفحه لاگین
-│   ├── js/
-│   │   └── admin.js                  # تب‌ها، آپلود مدیا و تعاملات پنل
-│   └── fonts/                        # فونت‌های پیش‌فرض (Badr, BYekan و ...)
-│
+│   ├── css/ admin.css, login.css
+│   ├── js/  admin.js, preview.js
+│   ├── demo/          # importable demo JSON
+│   └── images/presets/ # SVG gallery assets
 ├── includes/
+│   ├── class-devapress-presets.php
+│   ├── class-devapress-settings.php
+│   ├── class-devapress-css-builder.php
 │   ├── admin/
-│   │   ├── class-admin-menu.php      # ثبت منو در تنظیمات وردپرس
-│   │   └── class-admin-settings.php  # ثبت گزینه‌ها، sanitize و ریست
 │   └── frontend/
-│       ├── class-dashboard-customizer.php  # اعمال CSS روی داشبورد
-│       └── class-login-customizer.php      # اعمال CSS روی صفحه لاگین
-│
 └── views/
-    └── admin/
-        ├── settings-page.php         # صفحه اصلی تنظیمات
-        ├── tab-fonts.php             # تب فونت‌ها
-        ├── tab-colors.php            # تب رنگ‌ها
-        ├── tab-login.php             # تب صفحه لاگین
-        └── reset-options.php         # تب ریست تنظیمات
+    ├── admin/
+    └── preview/
 ```
 
 ---
 
-## گزینه‌های ذخیره‌شده
+## Development
 
-تنظیمات در جدول `wp_options` با پیشوند `devapress_` ذخیره می‌شوند. نمونه‌ای از گزینه‌های مهم:
+### Main classes
+- `Devapress_Core` — bootstrap
+- `Devapress_Settings` — unified settings storage
+- `Devapress_Presets` — preset definitions
+- `Devapress_Export_Import` — JSON export/import
+- `Devapress_Admin_Preview` — live preview AJAX
+- `Devapress_Dashboard_Customizer` / `Devapress_Login_Customizer` — frontend CSS
 
-| گزینه | کاربرد |
-|---|---|
-| `devapress_font_file` | URL فونت آپلودشده |
-| `devapress_font_size` | سایز فونت داشبورد |
-| `devapress_apply_font_globally` | اعمال فونت روی کل داشبورد |
-| `devapress_login_font_enable` | اعمال فونت روی صفحه لاگین |
-| `devapress_menu_color` | رنگ پس‌زمینه منو |
-| `devapress_icon_color` | رنگ آیکن‌های منو |
-| `devapress_bg_login_file` | ID تصویر پس‌زمینه لاگین |
-| `devapress_login_logo` | ID لوگوی صفحه لاگین |
-| `devapress_login_form_glass` | افکت شیشه‌ای فرم ورود |
-
----
-
-## مجوز دسترسی
-
-تنظیمات پلاگین فقط برای کاربرانی با قابلیت `manage_options` (معمولاً مدیر سایت) در دسترس است.
-
----
-
-## توسعه
-
-### ثابت‌های پلاگین
-
-| ثابت | توضیح |
-|---|---|
-| `DEVAPRESS_PLUGIN_DIR` | مسیر فیزیکی پلاگین |
-| `DEVAPRESS_PLUGIN_URL` | URL پایه پلاگین |
-| `DEVAPRESS_ASSETS_URL` | URL پوشه assets |
-| `DEVAPRESS_VIEW_DIR` | مسیر viewهای ادمین |
-
-### کلاس‌های اصلی
-
-- `Devapress_Core` — بارگذاری ماژول‌ها و enqueue دارایی‌ها
-- `Devapress_Admin_Menu` — ثبت صفحه تنظیمات
-- `Devapress_Admin_Settings` — مدیریت گزینه‌ها
-- `Devapress_Dashboard_Customizer` — CSS سفارشی داشبورد
-- `Devapress_Login_Customizer` — CSS سفارشی صفحه لاگین
-
----
-
-## مجوز
-
-این پروژه تحت مجوز GPL v2 یا بالاتر منتشر شده است — مطابق با استاندارد افزونه‌های وردپرس.
+### Constants
+`DEVAPRESS_PLUGIN_DIR`, `DEVAPRESS_PLUGIN_URL`, `DEVAPRESS_VERSION`, `DEVAPRESS_VIEW_DIR`
 
 ---
 
 ## Changelog
 
-### 1.0
-- انتشار اولیه
-- شخصی‌سازی فونت و رنگ داشبورد
-- شخصی‌سازی کامل صفحه ورود
-- ریست جداگانه تنظیمات
+### 2.2.0
+- Export / import settings (JSON)
+- Demo bundles for quick setup
+- Preset gallery with SVG screenshots
+- Tools tab, uninstall cleanup, `.gitignore`
+
+### 2.1.0
+- Live preview (mock + login iframe)
+- Enhanced preset thumbnails
+- About tab, two-column settings layout
+
+### 2.0.0
+- Preset system (6 presets)
+- Opt-in styling (no change until preset selected)
+- Unified settings API, migration from v1 options
+
+### 1.0.0
+- Initial release
+
+---
+
+## فارسی
+
+پلاگین **شخصی‌ساز دواپرس** برای سفارشی‌سازی داشبورد و صفحه ورود وردپرس با ۶ طرح آماده، پیش‌نمایش زنده، و خروجی/ورود JSON طراحی شده است.
+
+مسیر تنظیمات: **تنظیمات → شخصی‌ساز دواپرس**
+
+---
+
+## License
+
+GPL v2 or later.
